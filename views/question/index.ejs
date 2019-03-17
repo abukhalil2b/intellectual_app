@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        .alert {
+            display: block;
+            width: 100;
+            border: 1px solid #ddd;
+            padding: 5px;
+            border-radius: 5px;
+        }
+    </style>
+    <title></title>
+    <link href="css/bootstrap.min.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="row pt-5 justify-content-center">
+            <div class="col-lg-6 ">
+
+                <% for(var i=0; i < questions.length; i++) {%>
+                <div class="card">
+                    <div class="card-header">
+                        card header
+                    </div>
+                    <div class="alert alert-danger">
+                        <div class="card-body">
+                            <%= questions[i].content %>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <a href="/question/delete/<%= questions[i].id %>" class="btn btn-sm btn-danger">DEL</a></p>
+                    </div>
+                </div>
+                <% } %>
+
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

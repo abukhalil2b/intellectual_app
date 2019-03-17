@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title></title>
+    <link href="css/bootstrap.min.css">
+    <link href="css/style.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="row pt-5 justify-content-center">
+            <form action="/user/answer" method="POST">
+
+                <div class="col-lg-6 ">
+                    <h1>Tody Question</h1>
+                    <div class="alert alert-info">
+                        <%= question[0].content %>
+                    </div>
+                    <div class="alert alert-info">
+                        <%= question[0].a %>
+                    </div>
+                    <div class="alert alert-info">
+                        <%= question[0].b %>
+                    </div>
+                    <div class="alert alert-info">
+                        <%= question[0].c %>
+                    </div>
+                    <div class="alert alert-info">
+                        <%= question[0].d %>
+                    </div>
+                    <div class="alert alert-info">
+                        <select name="his_answer">
+                            <option value="a">a</option>
+                            <option value="b">b</option>
+                            <option value="c">c</option>
+                            <option value="d">d</option>
+                        </select>
+                    </div>
+                    <div class="alert alert-info">
+                        <input type="hidden" name="question_id" value=<%= question[0].id %>>
+                        <input type="hidden" name="phone" value=1>
+                        <input type="hidden" name="user_id" value=<%= user_id %>>
+                        <input type="hidden" name="his_mark" value=0>
+                        <input type="hidden" name="correct_answer" value=<%= question[0].ans %>>
+                        <button type="submit" class="btn btn-success">submit</button>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>

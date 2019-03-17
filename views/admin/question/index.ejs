@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title></title>
+    <link href="css/bootstrap.min.css">
+    <link href="css/style.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="row pt-5 justify-content-center">
+            <div class="col-lg-6 ">
+                <% for(var i=0; i<questions.length; i++) { %>
+                <div class="alert alert-success">
+                    <%= questions[i].content %> -
+                    <%= questions[i].a %> -
+                    <%= questions[i].b %> -
+                    <%= questions[i].d %> -
+                    <%= questions[i].d %> -
+                    <%= questions[i].ans %>
+                </div>
+                <% } %>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <style>
+        * {
+            box-sizing: border-box;
+            direction: rtl;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        h1 {
+            font-size: 33px;
+            color: #58566f;
+            text-align: center;
+        }
+
+        .container {
+            width: 90%;
+            margin: auto;
+        }
+
+        .form-group {
+            padding: 7px;
+            display: block;
+            width: 100%;
+        }
+
+        .form-control {
+
+            border: 1px solid #58566f;
+            border-radius: 7px;
+            padding: 7px;
+            width: 100%;
+        }
+
+        button {
+            width: 100%;
+            border: 1px solid #58566f;
+            border-radius: 7px;
+            padding: 7px;
+            background-color: #58566f;
+            color: #fff;
+        }
+
+        button:hover {
+            background-color: #eee;
+            color: #fff;
+
+        }
+
+        .img {
+            display: block;
+            width: 100%;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <form action="/user/register" method="POST">
+        <div class="container">
+            <h1>مسابقة المثقف الأول الإلكترونية</h1>
+            <div class="form-group">
+                <input class="form-control" type="text" placeholder="الاسم " name="first_name" required>
+            </div>
+            <div class="form-group">
+                <input class="form-control" type="number" placeholder="الهاتف" required name="phone">
+            </div>
+            <div class="form-group">
+                <input class="form-control" type="number" placeholder="الرقم السري" required name="password">
+            </div>
+            <div class="form-group">
+                <input class="form-control" type="text" placeholder="الولاية" required name="wilaya">
+            </div>
+            <div class="form-group">
+                <button>تسجيل</button>
+            </div>
+            <div class="img">
+                <img src="bg.png" alt="img" width="200">
+            </div>
+        </div>
+    </form>
+</body>
+
+</html>
