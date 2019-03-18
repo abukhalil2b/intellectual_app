@@ -65,7 +65,7 @@ app.post('/user/login', urlencodedParser, (req, res) => {
 //----------- DONE ---------------/
 
 app.get('/user/done', (req, res) => {
-    res.render('user/done')
+    res.render('user/answer_done')
 })
 
 //----------- REGISTER ---------------/
@@ -102,6 +102,7 @@ app.post('/user/register', urlencodedParser, (req, res) => {
 app.get('/user/register/done', (req, res) => {
     res.render('user/register_done')
 })
+
 //----------- USER SEND ANSWER ---------------/
 app.get('/user/question/:user_id', (req, res) => {
 

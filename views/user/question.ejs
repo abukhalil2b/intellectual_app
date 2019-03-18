@@ -2,53 +2,104 @@
 <html>
 
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title></title>
-    <link href="css/bootstrap.min.css">
-    <link href="css/style.css">
+    <style>
+        html {
+            direction: rtl;
+        }
+
+        .question {
+            min-height: 60px;
+            margin-bottom: 10px;
+        }
+
+        .choice {
+            margin-bottom: 10px;
+        }
+
+        select {
+            margin-top: 20px;
+            width: 100%;
+            border: 1px solid #58566f;
+            border-radius: 7px;
+            padding: 7px;
+        }
+
+        button {
+            margin-top: 20px;
+            width: 100%;
+            border: 1px solid #58566f;
+            border-radius: 7px;
+            padding: 7px;
+            background-color: #58566f;
+            color: #fff;
+            font-weight: bold;
+            font-size: 22px;
+        }
+
+        button:hover {
+            background-color: #eee;
+            color: #fff;
+
+        }
+
+        .container {
+            width: 90%;
+            margin: auto;
+        }
+
+        h1 {
+            font-size: 33px;
+            color: #58566f;
+            text-align: center;
+        }
+
+        .alert {
+            border: 1px solid #585858;
+            border-radius: 5px;
+            padding: 3px;
+            background-color: #f7f7f7;
+        }
+    </style>
 </head>
 
 <body>
     <div class="container">
-        <div class="row pt-5 justify-content-center">
-            <form action="/user/answer" method="POST">
+        <form action="/user/answer" method="POST">
+            <h1>سؤال اليوم</h1>
+            <div class="alert question">
+                <%= question[0].content %>
+            </div>
+            a:<div class="alert choice">
+                <%= question[0].a %>
+            </div>
+            b: <div class="alert choice">
+                <%= question[0].b %>
+            </div>
+            c: <div class="alert choice">
+                <%= question[0].c %>
+            </div>
+            d: <div class="alert choice">
+                <%= question[0].d %>
+            </div>
 
-                <div class="col-lg-6 ">
-                    <h1>Tody Question</h1>
-                    <div class="alert alert-info">
-                        <%= question[0].content %>
-                    </div>
-                    <div class="alert alert-info">
-                        <%= question[0].a %>
-                    </div>
-                    <div class="alert alert-info">
-                        <%= question[0].b %>
-                    </div>
-                    <div class="alert alert-info">
-                        <%= question[0].c %>
-                    </div>
-                    <div class="alert alert-info">
-                        <%= question[0].d %>
-                    </div>
-                    <div class="alert alert-info">
-                        <select name="his_answer">
-                            <option value="a">a</option>
-                            <option value="b">b</option>
-                            <option value="c">c</option>
-                            <option value="d">d</option>
-                        </select>
-                    </div>
-                    <div class="alert alert-info">
-                        <input type="hidden" name="question_id" value=<%= question[0].id %>>
-                        <input type="hidden" name="phone" value=1>
-                        <input type="hidden" name="user_id" value=<%= user_id %>>
-                        <input type="hidden" name="his_mark" value=0>
-                        <input type="hidden" name="correct_answer" value=<%= question[0].ans %>>
-                        <button type="submit" class="btn btn-success">submit</button>
-                    </div>
-                </div>
+            <select name="his_answer">
+                <option value="a">a</option>
+                <option value="b">b</option>
+                <option value="c">c</option>
+                <option value="d">d</option>
+            </select>
 
-            </form>
-        </div>
+
+            <input type="hidden" name="question_id" value=<%= question[0].id %>>
+            <input type="hidden" name="phone" value=1>
+            <input type="hidden" name="user_id" value=<%= user_id %>>
+            <input type="hidden" name="his_mark" value=0>
+            <input type="hidden" name="correct_answer" value=<%= question[0].ans %>>
+            <button type="submit" class="btn btn-success">ارسال</button>
+
+        </form>
     </div>
 </body>
 

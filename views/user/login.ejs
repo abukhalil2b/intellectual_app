@@ -2,31 +2,79 @@
 <html>
 
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title></title>
-    <link href="css/bootstrap.min.css">
-    <link href="css/style.css">
+    <style>
+        * {
+            box-sizing: border-box;
+            direction: rtl;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        h1 {
+            font-size: 33px;
+            color: #58566f;
+            text-align: center;
+        }
+
+        .container {
+            width: 90%;
+            margin: auto;
+        }
+
+        .form-group {
+            padding: 7px;
+            display: block;
+            width: 100%;
+        }
+
+        .form-control {
+
+            border: 1px solid #58566f;
+            border-radius: 7px;
+            padding: 7px;
+            width: 100%;
+        }
+
+        button {
+            width: 100%;
+            border: 1px solid #58566f;
+            border-radius: 7px;
+            padding: 7px;
+            background-color: #58566f;
+            color: #fff;
+        }
+
+        button:hover {
+            background-color: #eee;
+            color: #fff;
+
+        }
+
+        .img {
+            display: block;
+            width: 100%;
+            text-align: center;
+        }
+    </style>
 </head>
 
 <body>
     <form action="/user/login" method="POST">
         <div class="container">
-            <div class="row pt-5 justify-content-center">
-                <div class="col-lg-6 ">
-                    <h1>Login Page</h1>
-                    <div class="form-group">
-                        <input class="form-control" type="number" placeholder="phone" name="phone">
-                    </div>
-                    <div class="form-group">
-                        <input class="form-control" type="text" placeholder="password" name="password">
-                    </div>
-                    <div class="form-group">
-                        <button class="btn btn-success">Login</button>
-                    </div>
-                </div>
+            <h1>مسابقة المثقف الأول الإلكترونية</h1>
+            <div class="form-group">
+                <input class="form-control" type="number" placeholder="الهاتف" name="phone">
+            </div>
+            <div class="form-group">
+                <input class="form-control" type="text" placeholder="الرقم السري" name="password">
+            </div>
+            <div class="form-group">
+                <button class="btn btn-success">دخول</button>
             </div>
         </div>
     </form>
-    <a href="/user/register">register</a>
 </body>
 
 </html>
