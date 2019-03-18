@@ -173,7 +173,7 @@ app.post('/admin/question/store', urlencodedParser, (req, res) => {
                 if (err) {
                     res.send(err)
                 } else {
-                    res.send("INSERTED ID is: " + results.insertId)
+                    res.render('admin/question/question_done')
                 }
             })
         }

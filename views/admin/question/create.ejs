@@ -2,45 +2,95 @@
 <html>
 
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title></title>
-    <link href="css/bootstrap.min.css">
-    <link href="css/style.css">
+    <style>
+        html {
+            direction: rtl;
+            box-sizing: border-box;
+        }
+
+        .question {
+            min-height: 60px;
+            margin-bottom: 10px;
+        }
+
+        .choice {
+            margin-bottom: 10px;
+        }
+
+        .from-control {
+            margin-top: 20px;
+            width: 100%;
+            border: 1px solid #58566f;
+            border-radius: 7px;
+            padding: 7px;
+        }
+
+        button {
+            margin-top: 20px;
+            width: 100%;
+            border: 1px solid #58566f;
+            border-radius: 7px;
+            padding: 7px;
+            background-color: #58566f;
+            color: #fff;
+            font-weight: bold;
+            font-size: 22px;
+        }
+
+        button:hover {
+            background-color: #eee;
+            color: #fff;
+
+        }
+
+        .container {
+            width: 90%;
+            margin: auto;
+        }
+
+        h1 {
+            font-size: 33px;
+            color: #58566f;
+            text-align: center;
+        }
+
+        .alert {
+            border: 1px solid #585858;
+            border-radius: 5px;
+            padding: 3px;
+            background-color: #f7f7f7;
+        }
+    </style>
 </head>
 
 <body>
     <div class="container">
-        <div class="row pt-5 justify-content-center">
-            <form action="/admin/question/store" method="POST">
-                <div class="col-lg-6 ">
-                    <div class="form-group">
-                        <input type="text" class="from-control" placeholder="content" name="content">
-                    </div>
-                    <div class="form-group">
-                        <input type="text" class="from-control" placeholder="a" name="a">
-                    </div>
-                    <div class="form-group">
-                        <input type="text" class="from-control" placeholder="b" name="b">
-                    </div>
-                    <div class="form-group">
-                        <input type="text" class="from-control" placeholder="c" name="c">
-                    </div>
-                    <div class="form-group">
-                        <input type="text" class="from-control" placeholder="d" name="d">
-                    </div>
-                    <div class="form-group">
-                        <select name="ans" class="from-control">
-                            <option value="a">a</option>
-                            <option value="b">b</option>
-                            <option value="c">c</option>
-                            <option value="d">d</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <button class="btn btn-success" type="submit">submit</button>
-                    </div>
-                </div>
-            </form>
-        </div>
+        <form action="/admin/question/store" method="POST">
+            <div class="question">
+                <input type="text" class="from-control" placeholder="content" name="content">
+            </div>
+            <div class="choice">
+                <input type="text" class="from-control" placeholder="a" name="a">
+            </div>
+            <div class="choice">
+                <input type="text" class="from-control" placeholder="b" name="b">
+            </div>
+            <div class="choice">
+                <input type="text" class="from-control" placeholder="c" name="c">
+            </div>
+            <div class="choice">
+                <input type="text" class="from-control" placeholder="d" name="d">
+            </div>
+            <select name="ans" class="from-control">
+                <option value="a">a</option>
+                <option value="b">b</option>
+                <option value="c">c</option>
+                <option value="d">d</option>
+            </select>
+            <button type="submit" class="btn btn-success">ارسال</button>
+        </form>
     </div>
 </body>
 
