@@ -93,8 +93,8 @@
 
 
             <input type="hidden" name="question_id" value=<%= question[0].id %>>
-            <input type="hidden" name="phone" value=1>
-            <input type="hidden" name="user_id" value=<%= user_id %>>
+            <input type="hidden" name="phone" value=<%= user.phone %>>
+            <input type="hidden" name="user_id" value=<%= user.id %>>
             <input type="hidden" name="his_mark" value=0>
             <input type="hidden" name="correct_answer" value=<%= question[0].ans %>>
             <button type="submit" class="btn btn-success">ارسال</button>

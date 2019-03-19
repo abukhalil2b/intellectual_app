@@ -105,11 +105,14 @@ app.get('/user/register/done', (req, res) => {
 
 //----------- USER SEND ANSWER ---------------/
 app.get('/user/question/:user_id', (req, res) => {
-
-    connection.query("SELECT * FROM questions order by id desc limit 1", (error, results, fields) => {
-        if (error) throw error;
-        res.render('user/question', { question: results, user_id: req.params.user_id })
+    connection.query("SELECT * FROM users WHERE id =" + req.params.user_id + " limit 1", (err, user) => {
+        if (err) throw err
+        connection.query("SELECT * FROM questions order by id desc limit 1", (error, results, fields) => {
+            if (error) throw error;
+            res.render('user/question', { question: results, user: user[0] })
+        })
     })
+
 })
 
 //user_id	question_id	his_answer	correct_answer	his_mark
@@ -156,7 +159,8 @@ app.get('/admin/answer/index', (req, res) => {
                 if (err) {
                     res.send(err)
                 } else {
-                    res.render('admin/answer/index', { answers: results })
+                    res.send(results)
+                    // res.render('admin/answer/index', { answers: results })
                 }
             })
         }
