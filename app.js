@@ -138,8 +138,48 @@ app.post('/user/answer', urlencodedParser, (req, res) => {
 })
 
 //ADMISSION [route]
-app.get('/admin/question/create', (req, res) => {
-    res.render('admin/question/create')
+
+app.get('/', (req, res) => {
+    res.render('admin/index')
+})
+
+app.get('/admin/answer/index', (req, res) => {
+    connection.getConnection((err, tempConn) => {
+        if (err) {
+            tempConn.destroy()
+        } else {
+            var query = "SELECT user_has_answer.phone,users.first_name as firstName" +
+                " FROM user_has_answer left join users on users.id = user_has_answer.user_id" +
+                " where user_has_answer.his_mark=1"
+            tempConn.query(query, (err, results, fields) => {
+                tempConn.destroy()
+                if (err) {
+                    res.send(err)
+                } else {
+                    res.render('admin/answer/index', { answers: results })
+                }
+            })
+        }
+    })
+
+})
+
+app.get('/admin/user/index', (req, res) => {
+    connection.getConnection((err, tempConn) => {
+        if (err) {
+            tempConn.destroy()
+        } else {
+            tempConn.query("SELECT * FROM users", (err, results, fields) => {
+                tempConn.destroy()
+                if (err) {
+                    res.send(err)
+                } else {
+                    res.render('admin/user/index', { users: results })
+                }
+            })
+        }
+    })
+
 })
 
 app.get('/admin/question/index', (req, res) => {
@@ -158,6 +198,10 @@ app.get('/admin/question/index', (req, res) => {
         }
     })
 
+})
+
+app.get('/admin/question/create', (req, res) => {
+    res.render('admin/question/create')
 })
 
 app.post('/admin/question/store', urlencodedParser, (req, res) => {

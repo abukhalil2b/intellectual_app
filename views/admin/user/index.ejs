@@ -12,6 +12,9 @@
             text-align: center
         }
 
+        table tr:first-child {
+            background-color: #ddd;
+        }
 
         html {
             direction: rtl;
@@ -36,16 +39,18 @@
     <div class="container">
         <div class="card">
             <table border="1">
-
-                <% for(var i=0; i<questions.length; i++) { %>
                 <tr>
-                    <td><%= questions[i].id %></td>
-                    <td><%= questions[i].content %></td>
-                    <td><%= questions[i].a %> </td>
-                    <td><%= questions[i].b %></td>
-                    <td><%= questions[i].c %></td>
-                    <td><%= questions[i].d %></td>
-                    <td><%= questions[i].ans %></td>
+                    <td>الاسم</td>
+                    <td>الهاتف</td>
+                    <td>الرقم السري</td>
+                    <td>الولاية</td>
+                </tr>
+                <% for(var i=0; i<users.length; i++) { %>
+                <tr>
+                    <td><%= users[i].first_name %></td>
+                    <td><%= users[i].phone %> </td>
+                    <td><%= users[i].password %></td>
+                    <td><%= users[i].wilaya %></td>
                 </tr>
                 <% } %>
             </table>
