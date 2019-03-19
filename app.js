@@ -18,46 +18,56 @@ const connection = mysql.createPool({
 })
 
 //----------- LOG IN ---------------/
-app.get('/user/login', (req, res) => {
+app.get('/user/login/', (req, res) => {
     res.render('user/login')
 })
 
 app.post('/user/login', urlencodedParser, (req, res) => {
-    const phone = req.body.phone
-    const password = req.body.password
-    connection.getConnection((err, tempConn) => {
-        if (err) {
-            tempConn.destroy()
-        } else {
-            var query = "SELECT * FROM users WHERE phone = " + phone + " AND password = " + password + ""
-            tempConn.query(query, (err, logedUser, fields) => {
-                // tempConn.destroy()
-                if (err) {
-                    res.send(err)
-                } else {
-                    var query2 = "SELECT * FROM `user_has_answer` WHERE user_id = " + logedUser[0].id
-                        + " AND question_id = (SELECT id FROM questions ORDER BY id DESC LIMIT 1)"
-                    tempConn.query(query2, (err, answeredUser, fields) => {
-                        if (err) {
-                            tempConn.destroy()
-                            res.send(err)
-                        } else {
-                            tempConn.destroy()
-                            if (answeredUser.length > 0) {
-                                res.redirect('/user/done')
-                            }
-                            else {
-                                res.redirect('/user/question/' + logedUser[0].id)
-                            }
-                        }
+    const phone = parseInt(req.body.phone)
+    const password = parseInt(req.body.password)
 
-                    })
+    if (!isNaN(phone) || !isNaN(password)) {
 
-                }
+        connection.getConnection((err, tempConn) => {
+            if (err) {
+                tempConn.destroy()
+            } else {
+                var query = "SELECT * FROM users WHERE phone = " + phone + " AND password = " + password + ""
+                tempConn.query(query, (err, logedUser, fields) => {
+                    // tempConn.destroy()
+                    if (err) {
+                        res.send(err)
+                    } else {
 
-            })
-        }
-    })
+                        if (logedUser.length > 0) {
+                            var query2 = "SELECT * FROM `user_has_answer` WHERE user_id = " + logedUser[0].id
+                                + " AND question_id = (SELECT id FROM questions ORDER BY id DESC LIMIT 1)"
+                            tempConn.query(query2, (err, answeredUser, fields) => {
+                                if (err) {
+                                    tempConn.destroy()
+                                    res.send(err)
+                                } else {
+                                    tempConn.destroy()
+                                    if (answeredUser.length > 0) {
+                                        res.redirect('/user/done')
+                                    }
+                                    else {
+                                        res.redirect('/user/question/' + logedUser[0].id)
+                                    }
+                                }
+
+                            })
+                        } else { res.end('somethig went wrrong, you have to eixt..!') }
+
+
+                    }
+
+                })
+            }
+        })
+
+    } else { res.end('somethig went wrrong, you have to eixt..!') }
+
 })
 
 
@@ -159,8 +169,8 @@ app.get('/admin/answer/index', (req, res) => {
                 if (err) {
                     res.send(err)
                 } else {
-                    res.send(results)
-                    // res.render('admin/answer/index', { answers: results })
+                    // res.send(results)
+                    res.render('admin/answer/index', { answers: results })
                 }
             })
         }
