@@ -150,7 +150,7 @@ app.get('/admin/answer/index', (req, res) => {
         } else {
             var query = "SELECT user_has_answer.phone,users.first_name as firstName" +
                 " FROM user_has_answer left join users on users.id = user_has_answer.user_id" +
-                " where user_has_answer.his_mark=1"
+                " where user_has_answer.his_mark=1 AND question_id = (SELECT id FROM questions ORDER BY id DESC LIMIT 1)"
             tempConn.query(query, (err, results, fields) => {
                 tempConn.destroy()
                 if (err) {
